@@ -8,9 +8,31 @@ BODY {
 .paper {
   background-color: white;
   height: 90vh;
-  padding: 20px; /* Add units to padding */
-  margin: 20px; /* Add margin to increase space around the paper */
+  padding: 20px;
+  margin: 20px;
   overflow: scroll;
   display: flex;
   justify-content: center;
+}
+
+/* menu stuff */
+menu{
+    background-color: royalblue;
+    margin:20px;
+    margin-bottom: 0;
+    padding:20px;
+}
+menu li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px; /* Adjust the value as needed */
+}
+menu li a{
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
 }
