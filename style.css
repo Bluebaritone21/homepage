@@ -1,0 +1,16 @@
+
+BODY {
+  background-color: Beige;
+  background-image: url("/desk.webp");
+  color: black;
+  font-family: Georgia,Tinos,times,serif;
+  overflow:hidden;
+}
+.paper{
+  background-color:white;
+  height:90vh;
+  padding:20;
+  overflow:scroll;
+  display: flex;
+  justify-content: center;
+}
