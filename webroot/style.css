@@ -1,0 +1,38 @@
+BODY {
+  background-color: Beige;
+  background-image: url("/desk.webp");
+  color: black;
+  font-family: Georgia,Tinos,times,serif;
+  overflow:hidden;
+}
+.paper {
+  background-color: white;
+  height: 90vh;
+  padding: 20px;
+  margin: 20px;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+}
+
+/* menu stuff */
+menu{
+    background-color: royalblue;
+    margin:20px;
+    margin-bottom: 0;
+    padding:20px;
+}
+menu li{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 10px; /* Adjust the value as needed */
+}
+menu li a{
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
