@@ -47,15 +47,15 @@
         <form action="mailto:bluebaritone21@gmail.com"
               method="POST"
               enctype="multipart/form-data"
-              name="EmailForm">
+              id="EmailForm">
               Name:<br>
-              <input type="text" size="19" name="Contact-Name"><br><br>
+              <input type="text" size="19" id="Contact-Name"><br><br>
               Email:<br>
-              <input type="email" name="Contact-Email"><br><br> 
+              <input type="email" id="Contact-Email"><br><br> 
               Message:<br> 
-              <textarea name="Contact-Message" rows="6″ cols="20″>
+              <textarea id="Contact-Message" rows="6″ cols="20″>
               </textarea><br><br> 
-              <button type="submit" value="Submit">Send</button>
+              <button onclick="open('mailto:bluebaritone21@gmail.com?subject='+document.getElementById('Contact-Email').value+'&body='+document.getElementById('Contact-Message').value)" value="Submit">Send</button>
         </form>  
         <BR />
         This web site is proudly <IMG SRC="/neocities.png" ALT="hosted with Neocities" />
