@@ -48,6 +48,20 @@
             padding: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
+        #activity-button{
+            background-color: black;
+            border-radius:100%;
+            border:0;
+            font-weight: bold;
+            color:white;
+            position: absolute;
+            top:5px;
+            left:5px;
+            z-index: 100001;
+        }
+        #activity-button:hover{
+            background-color: rgb(50,50,50);
+        }
         .activity-bar{
             position: fixed;
             background-color: black;
@@ -74,6 +88,9 @@
         .window:hover{
             resize: both;
         }
+        .window:active{
+            resize: both;
+        }
         #debug-button{
             position: absolute;
             left:    0;
@@ -84,9 +101,16 @@
             cursor: move;
             background-color: none;
         }
+        .shrink{
+            -webkit-transform:scale(0.5);
+            -moz-transform:scale(0.5);
+            -ms-transform:scale(0.5);
+            transform:scale(0.5);
+        }
     </style>
+            <div class="activity-bar">Loading...</div>
+            <button id="activity-button">Activities</div>
     <body>
-        <div class="activity-bar">Loading...</div>
         <br />
         <button id=debug-button onclick="makeDevTools()">debug</button>
         <button onclick="makeWindow()">Make window</button>
