@@ -40,9 +40,7 @@
             top:5px;
             right:5px;
         }
-        desktop{
-            width:100vw;
-            height:100vh;
+        body{
             background-image: url("gnome_example.jpg");
             background-repeat: no-repeat;
             background-size: cover;
@@ -52,7 +50,7 @@
             transition: scale 0.5s ease-in-out;
             scale:1.0;
         }
-        desktop.small{
+        body.small{
             scale:0.5;
         }
         #activity-button{
@@ -117,26 +115,27 @@
     </style>
             <div class="activity-bar">Loading...</div>
             <button id="activity-button" onclick="toggleActivities()">Activities</div>
-    <desktop>
+    <body>
         <br />
         <button id=debug-button onclick="makeDevTools()">debug</button>
+        <br />
         <button onclick="makeWindow()" class="">Make window</button>
-    </desktop>
+    </body>
     <script>
         var gensym = 0;
         var activities = false;
         function toggleActivities(){
             if(!activities){
-                document.getElementsByTagName("desktop")[0].classList.add("small");
+                document.getElementsByTagName("body")[0].classList.add("small");
             }else{
-                document.getElementsByTagName("desktop")[0].classList.remove("small");
+                document.getElementsByTagName("body")[0].classList.remove("small");
             }
             activities = !activities;
         }
         function makeDevTools(){
             var script = document.createElement('script');
                 script.src='https://cdn.jsdelivr.net/npm/eruda';
-                document.desktop.appendChild(script); eruda.init();
+                document.body.appendChild(script); eruda.init();
         }
         function makeWindow(){
             gensym++;
@@ -144,7 +143,7 @@
             clone = document.getElementById("window").cloneNode(true);
             clone.id = "window"+gensym;
             clone.querySelector("#windowheader").id = "window"+gensym+"header";
-            document.getElementsByTagName("desktop")[0].appendChild(clone);
+            document.getElementsByTagName("body")[0].appendChild(clone);
             clone.querySelector(".close").id=gensym;
             clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove()});
             dragElement(clone); 
