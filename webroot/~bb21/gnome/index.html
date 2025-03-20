@@ -47,6 +47,11 @@
             margin: 0;
             padding: 0;
             font-family: Arial, Helvetica, sans-serif;
+            transition: scale 0.5s ease-in-out;
+            scale:1.0;
+        }
+        body.small{
+            scale:0.5;
         }
         #activity-button{
             background-color: black;
@@ -109,14 +114,23 @@
         }
     </style>
             <div class="activity-bar">Loading...</div>
-            <button id="activity-button">Activities</div>
+            <button id="activity-button" onclick="toggleActivities()">Activities</div>
     <body>
         <br />
         <button id=debug-button onclick="makeDevTools()">debug</button>
-        <button onclick="makeWindow()">Make window</button>
+        <button onclick="makeWindow()" class="">Make window</button>
     </body>
     <script>
         var gensym = 0;
+        var activities = false;
+        function toggleActivities(){
+            if(!activities){
+                document.getElementsByTagName("body")[0].classList.add("small");
+            }else{
+                document.getElementsByTagName("body")[0].classList.remove("small");
+            }
+            activities = !activities;
+        }
         function makeDevTools(){
             var script = document.createElement('script');
                 script.src='https://cdn.jsdelivr.net/npm/eruda';
