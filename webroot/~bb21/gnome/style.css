@@ -1,0 +1,149 @@
+hidden{
+    display: none;
+}
+.close{
+    border-radius:100%;
+    width:30px;
+    height:30px;
+    background-color:lightgrey;
+    border:none;
+    position:absolute;
+    top:5px;
+    right:5px;
+    font-size: 15pt;
+}
+@font-face {
+    font-family: 'Cantarell';
+    src: url("cantarell.regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Heading';
+    src: url("cantarell.bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+body{
+    margin: 0;
+    font-family: 'Cantarell', sans-serif;
+    background-color: rgb(50,50,50);
+    overflow: hidden;
+}
+desktop{
+    width:100vw;
+    height:100vh;
+    background-image: url("gnome_example.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:absolute;
+    top:0px;
+    left:0px;
+    margin: 0px;
+    padding: 0px;
+    transition: scale 0.5s ease-in-out;
+    scale:1.0;
+    z-index:0;
+}
+desktop.small{
+    scale:0.5;
+}
+#activity-button{
+    background-color: black;
+    border-radius:10px;
+    border:0;
+    font-family: 'Heading';
+    font-weight: 900;
+    color:white;
+    position: absolute;
+    top:5px;
+    left:5px;
+    z-index: 100001;
+}
+#activity-button:hover{
+    background-color: rgb(50,50,50);
+}
+.taskbar{
+    background-color: rgb(25,25,25);
+    border-radius:30px;
+    border:0;
+    font-weight: bold;
+    color:white;
+    position: absolute;
+    bottom:10px;
+    left:45%;
+}
+.app-button{
+    background:none;
+    border:none;
+}
+.app-button:hover{
+    background:none;
+    border:none;
+}
+.activity-bar{
+    position: fixed;
+    background-color: black;
+    color:white;
+    width: 100vw;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12pt;
+    text-align: center;
+    font-family: 'Heading';
+    font-weight: 900;
+    margin: 0;
+    z-index: 100000;
+}
+.window {
+    position: absolute;
+    text-align: center;
+    border-radius: 20px;
+    width:100px;
+    height:100px;
+    top:30px;
+    left:20px;
+    overflow: hidden;
+    background-color:white;
+    box-shadow:0 0 5px rgba(0,0,0,0.4);
+}
+input{
+    background-color: lightgrey;
+    border:0;
+    border-radius:10px;
+}
+input:hover{
+    background-color: white;
+    border:1px darkgrey;
+}
+button{
+    background-color: white;
+    border:0;
+    border-radius:10px;
+}
+button:hover{
+    background-color: lightgrey;
+    border:1px darkgrey;
+}
+.window:hover{
+    resize: both;
+}
+.window:active{
+    resize: both;
+}
+#debug-button{
+    position: absolute;
+    left:    0;
+    bottom:   0;
+}
+.header {
+    padding: 20px;
+    cursor: move;
+    background-color: none;
+}
+.shrink{
+    -webkit-transform:scale(0.5);
+    -moz-transform:scale(0.5);
+    -ms-transform:scale(0.5);
+    transform:scale(0.5);
+}

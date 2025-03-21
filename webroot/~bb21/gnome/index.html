@@ -3,6 +3,7 @@
     <head>
         <title>GNOME</title>
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
+        <link rel="stylesheet" href="style.css">
     </head>
     <hidden>
         <div id="window" class=window>
@@ -11,158 +12,6 @@
             <button class="close" id="close">&times;</button>
         </div>
     </hidden>
-    <script>
-        function time(){
-            var d = new Date();
-            var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
-            var date = d.getDate();
-            var min = d.getMinutes();
-            if(min.toString().length<2){
-                min = "0" + min;
-            }
-            var hour = d.getHours();
-            document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
-        }
-
-        setInterval(time,1000);
-    </script>
-    <style>
-        hidden{
-            display: none;
-        }
-        .close{
-            border-radius:100%;
-            width:30px;
-            height:30px;
-            background-color:lightgrey;
-            border:none;
-            position:absolute;
-            top:5px;
-            right:5px;
-        }
-        @font-face {
-            font-family: 'Cantarell';
-            src: url("cantarell.regular.ttf") format("truetype");
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face{
-            font-family: 'Heading';
-            src: url("cantarell.bold.ttf") format("truetype");
-            font-weight: normal;
-            font-style: normal;
-        }
-        body{
-            margin: 0;
-            font-family: 'Cantarell', sans-serif;
-            background-color: rgb(50,50,50);
-            overflow: hidden;
-        }
-        desktop{
-            width:100vw;
-            height:100vh;
-            background-image: url("gnome_example.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            position:absolute;
-            top:0px;
-            left:0px;
-            margin: 0px;
-            padding: 0px;
-            transition: scale 0.5s ease-in-out;
-            scale:1.0;
-            z-index:0;
-        }
-        desktop.small{
-            scale:0.5;
-        }
-        #activity-button{
-            background-color: black;
-            border-radius:10px;
-            border:0;
-            font-family: 'Heading';
-            font-weight: 900;
-            color:white;
-            position: absolute;
-            top:5px;
-            left:5px;
-            z-index: 100001;
-        }
-        #activity-button:hover{
-            background-color: rgb(50,50,50);
-        }
-        .taskbar{
-            background-color: rgb(25,25,25);
-            border-radius:30px;
-            border:0;
-            font-weight: bold;
-            color:white;
-            position: absolute;
-            bottom:10px;
-            left:50%;
-        }
-        .app-button{
-            background:none;
-            border:none;
-        }
-        .activity-bar{
-            position: fixed;
-            background-color: black;
-            color:white;
-            width: 100vw;
-            height: 30px;
-            line-height: 30px;
-            font-size: 12pt;
-            text-align: center;
-            font-family: 'Heading';
-            font-weight: 900;
-            margin: 0;
-            z-index: 100000;
-        }
-        .window {
-            position: absolute;
-            text-align: center;
-            border-radius: 20px;
-            width:100px;
-            height:100px;
-            top:30px;
-            left:20px;
-            overflow: hidden;
-            background-color:white;
-            box-shadow:0 0 5px rgba(0,0,0,0.4);
-        }
-        input{
-            background-color: lightgrey;
-            border:0;
-            border-radius:20px;
-        }
-        input:hover{
-            background-color: white;
-            border:1px darkgrey;
-        }
-        .window:hover{
-            resize: both;
-        }
-        .window:active{
-            resize: both;
-        }
-        #debug-button{
-            position: absolute;
-            left:    0;
-            bottom:   0;
-        }
-        .header {
-            padding: 10px;
-            cursor: move;
-            background-color: none;
-        }
-        .shrink{
-            -webkit-transform:scale(0.5);
-            -moz-transform:scale(0.5);
-            -ms-transform:scale(0.5);
-            transform:scale(0.5);
-        }
-    </style>
     <body>
         <div class="taskbar">
             <button onclick="var label=document.createElement(`h1`);
@@ -173,26 +22,42 @@
             </button>
             <button onclick="var urlBar=document.createElement(`input`);
                              var iframe=document.createElement(`iframe`);
+                             var useCORS=false;
+                             var corsButton=document.createElement(`button`);
+                             corsButton.innerHTML='&#9776;';
+                             corsButton.style.position='absolute';
+                             corsButton.onclick = function(){useCORS=!useCORS;};
+                             corsButton.style.top='5px';
+                             corsButton.style.right='50pt';
+                             corsButton.style.height='30px';
+                             corsButton.style.fontSize='15pt';
+                             corsButton.title='Disply URL using a cors proxy';
                              urlBar.type=`text`;
                              urlBar.style.height=`30px`;
                              urlBar.style.position=`absolute`;
                              urlBar.style.top=`5px`;
-                             urlBar.style.width=`80%`;
-                             urlBar.style.left=`10%`;
+                             urlBar.style.width=`60%`;
+                             urlBar.style.left=`20%`;
+                             urlBar.value=`https://www.gnome.org`;
                              urlBar.onkeypress = function(e){
                                  if (!e) e = window.event;
                                  var keyCode = e.code || e.key;
                                  if (keyCode == 'Enter'){
-                                     // Enter pressed
-                                     return false;
+                                     if(useCORS){
+                                        var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlBar.value);
+                                     }else{
+                                        var url=urlBar.value;
+                                     }
+                                     iframe.src=url;
                                     }
-                                }
-                             iframe.src='https://www.frogfind.com';
+                             }
+                             iframe.src='https://www.gnome.org';
                              iframe.style.width=`100%`;
-                             iframe.style.height=`calc(100% - 30px)`;
+                             iframe.style.height=`calc(100% - 40px)`;
                              iframe.style.border=`none`;
                              var window = makeWindow(1000,600,iframe);
                              window.appendChild(urlBar);
+                             window.appendChild(corsButton);
                              "
                      class="app-button">
                 <img src="https://apps.gnome.org/icons/scalable/org.gnome.Epiphany.svg" height="50">
@@ -206,71 +71,5 @@
         <div class="activity-bar">Loading...</div>
         <button id="activity-button" onclick="toggleActivities()">Activities</div>
     </body>
-    <script>
-        var gensym = 0;
-        var activities = false;
-        function toggleActivities(){
-            if(!activities){
-                document.getElementsByTagName("desktop")[0].classList.add("small");
-            }else{
-                document.getElementsByTagName("desktop")[0].classList.remove("small");
-            }
-            activities = !activities;
-        }
-        function makeDevTools(){
-            var script = document.createElement('script');
-                script.src='https://cdn.jsdelivr.net/npm/eruda';
-                document.body.appendChild(script); eruda.init();
-        }
-        function makeWindow(wdth,hght,contents){
-            gensym++;
-            var currentGensym=gensym;
-            var clone = document.getElementById("window").cloneNode(true);
-            clone.id = "window"+gensym;
-            clone.querySelector("#windowheader").id = "window"+gensym+"header";
-            document.getElementsByTagName("desktop")[0].appendChild(clone);
-            clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove()});
-            dragElement(clone);
-            clone.style.width = wdth+"px";
-            clone.style.height= hght+"px";
-            clone.appendChild(contents);
-            return clone;
-        }
-        var lastheight = 0;
-        
-        function dragElement(elmnt) {
-          var deltaX = 0, deltaY = 0, X = 0, Y = 0;
-          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-          
-          function dragMouseDown(e) {
-            elmnt.style.zIndex=lastheight;
-            e = e || window.event;
-            e.preventDefault();
-
-            X = e.clientX;
-            Y = e.clientY;
-            lastheight++;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-          }
-          function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            deltaX = X - e.clientX;
-            deltaY = Y - e.clientY;
-            X = e.clientX;
-            Y = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - deltaY) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - deltaX) + "px";
-          }
-        
-          function closeDragElement() {
-            /* stop moving when mouse button is released:*/
-            document.onmouseup = null;
-            document.onmousemove = null;
-          }
-        }
-        </script>
+    <script src="wm.js"></script>
 </html>

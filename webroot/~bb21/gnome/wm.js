@@ -1,0 +1,78 @@
+var gensym = 0;
+var activities = false;
+function toggleActivities(){
+    if(!activities){
+        document.getElementsByTagName("desktop")[0].classList.add("small");
+    }else{
+        document.getElementsByTagName("desktop")[0].classList.remove("small");
+    }
+    activities = !activities;
+}
+function makeDevTools(){
+    var script = document.createElement('script');
+        script.src='https://cdn.jsdelivr.net/npm/eruda';
+        document.body.appendChild(script); eruda.init();
+}
+function makeWindow(wdth,hght,contents){
+    gensym++;
+    var currentGensym=gensym;
+    var clone = document.getElementById("window").cloneNode(true);
+    clone.id = "window"+gensym;
+    clone.querySelector("#windowheader").id = "window"+gensym+"header";
+    document.getElementsByTagName("desktop")[0].appendChild(clone);
+    clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove()});
+    dragElement(clone);
+    clone.style.width = wdth+"px";
+    clone.style.height= hght+"px";
+    clone.appendChild(contents);
+    return clone;
+}
+var lastheight = 0;
+
+function dragElement(elmnt) {
+  var deltaX = 0, deltaY = 0, X = 0, Y = 0;
+  document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  
+  function dragMouseDown(e) {
+    elmnt.style.zIndex=lastheight;
+    e = e || window.event;
+    e.preventDefault();
+
+    X = e.clientX;
+    Y = e.clientY;
+    lastheight++;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    deltaX = X - e.clientX;
+    deltaY = Y - e.clientY;
+    X = e.clientX;
+    Y = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - deltaY) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - deltaX) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+function time(){
+    var d = new Date();
+    var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getMonth()];
+    var date = d.getDate();
+    var min = d.getMinutes();
+    if(min.toString().length<2){
+        min = "0" + min;
+    }
+    var hour = d.getHours();
+    document.getElementsByClassName("activity-bar")[0].innerHTML = month + " " + date + " " + hour + ":" + min
+}
+
+setInterval(time,1000);
