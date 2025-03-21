@@ -42,11 +42,8 @@
         }
         body{
             margin: 0;
-            padding: 0;
             font-family: Arial, Helvetica, sans-serif;
-            transition: scale 0.5s ease-in-out;
             background-color: rgb(50,50,50);
-            scale:1.0;
             overflow: hidden;
         }
         desktop{
@@ -82,6 +79,20 @@
         #activity-button:hover{
             background-color: rgb(50,50,50);
         }
+        .taskbar{
+            background-color: rgb(25,25,25);
+            border-radius:30px;
+            border:0;
+            font-weight: bold;
+            color:white;
+            position: absolute;
+            bottom:10px;
+            left:50%;
+        }
+        .app-button{
+            background:none;
+            border:none;
+        }
         .activity-bar{
             position: fixed;
             background-color: black;
@@ -101,6 +112,8 @@
             border-radius: 20px;
             width:100px;
             height:100px;
+            top:50%;
+            left:50%;
             overflow: auto;
             background-color:white;
             box-shadow:0 0 5px rgba(0,0,0,0.4);
@@ -129,11 +142,17 @@
         }
     </style>
     <body>
+        <div class="taskbar">
+            <button onclick="var label=document.createElement(`h1`);
+                             label.innerText=`Hello, World!`;
+                             makeWindow(500,200,label)" 
+                    class="app-button">
+                <img src=https://apps.gnome.org/icons/scalable/org.gnome.gitlab.YaLTeR.Identity.svg height="50">
+            </button>
+        </div>
         <desktop>
             <br />
             <button id=debug-button onclick="makeDevTools()">debug</button>
-            <br />
-            <button onclick="makeWindow()" class="">Make window</button>
         </desktop>
         <div class="activity-bar">Loading...</div>
         <button id="activity-button" onclick="toggleActivities()">Activities</div>
@@ -154,16 +173,19 @@
                 script.src='https://cdn.jsdelivr.net/npm/eruda';
                 document.body.appendChild(script); eruda.init();
         }
-        function makeWindow(){
+        function makeWindow(wdth,hght,contents){
             gensym++;
             var currentGensym=gensym;
-            clone = document.getElementById("window").cloneNode(true);
+            var clone = document.getElementById("window").cloneNode(true);
             clone.id = "window"+gensym;
             clone.querySelector("#windowheader").id = "window"+gensym+"header";
             document.getElementsByTagName("desktop")[0].appendChild(clone);
-            clone.querySelector(".close").id=gensym;
             clone.querySelector(".close").addEventListener("click",function(){this.parentNode.remove()});
-            dragElement(clone); 
+            dragElement(clone);
+            clone.style.width = wdth+"px";
+            clone.style.height= hght+"px";
+            clone.appendChild(contents);
+            return clone;
         }
         var lastheight = 0;
         
