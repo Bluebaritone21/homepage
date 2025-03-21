@@ -40,9 +40,21 @@
             top:5px;
             right:5px;
         }
+        @font-face {
+            font-family: 'Cantarell';
+            src: url("cantarell.regular.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face{
+            font-family: 'Heading';
+            src: url("cantarell.bold.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
         body{
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Cantarell', sans-serif;
             background-color: rgb(50,50,50);
             overflow: hidden;
         }
@@ -57,7 +69,6 @@
             left:0px;
             margin: 0px;
             padding: 0px;
-            font-family: Arial, Helvetica, sans-serif;
             transition: scale 0.5s ease-in-out;
             scale:1.0;
             z-index:0;
@@ -69,7 +80,8 @@
             background-color: black;
             border-radius:10px;
             border:0;
-            font-weight: bold;
+            font-family: 'Heading';
+            font-weight: 900;
             color:white;
             position: absolute;
             top:5px;
@@ -102,7 +114,8 @@
             line-height: 30px;
             font-size: 12pt;
             text-align: center;
-            font-weight: bold;
+            font-family: 'Heading';
+            font-weight: 900;
             margin: 0;
             z-index: 100000;
         }
@@ -114,7 +127,7 @@
             height:100px;
             top:50%;
             left:50%;
-            overflow: auto;
+            overflow: hidden;
             background-color:white;
             box-shadow:0 0 5px rgba(0,0,0,0.4);
         }
