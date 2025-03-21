@@ -14,11 +14,21 @@
     </hidden>
     <body>
         <div class="taskbar">
-            <button onclick="var label=document.createElement(`h1`);
-                             label.innerText=`Hello, World!`;
-                             makeWindow(500,200,label)" 
+            <button onclick="var textbox=document.createElement(`textarea`);
+                             textbox.style.width='100%';
+                             textbox.style.height='calc(100% - 40px)';
+                             textbox.style.resize='none';
+                             var win = makeWindow(600,500,textbox);
+                             win.style.backgroundColor='#eaeaea';
+                             var title  =document.createElement('h3');
+                             title.innerText='Untitled Document';
+                             title.style.position='absolute';
+                             title.style.top='-5px';
+                             title.style.left='30%';
+                             win.appendChild(title);
+                             "
                     class="app-button">
-                <img src=https://apps.gnome.org/icons/scalable/org.gnome.gitlab.YaLTeR.Identity.svg height="50">
+                <img src=https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg height="50">
             </button>
             <button onclick="var urlBar=document.createElement(`input`);
                              var iframe=document.createElement(`iframe`);
@@ -28,7 +38,7 @@
                              corsButton.style.position='absolute';
                              corsButton.onclick = function(){useCORS=!useCORS;};
                              corsButton.style.top='5px';
-                             corsButton.style.right='50pt';
+                             corsButton.style.right='50px';
                              corsButton.style.height='30px';
                              corsButton.style.fontSize='15pt';
                              corsButton.title='Disply URL using a cors proxy';
@@ -36,8 +46,8 @@
                              urlBar.style.height=`30px`;
                              urlBar.style.position=`absolute`;
                              urlBar.style.top=`5px`;
-                             urlBar.style.width=`60%`;
-                             urlBar.style.left=`20%`;
+                             urlBar.style.width=`80%`;
+                             urlBar.style.left=`10%`;
                              urlBar.value=`https://www.gnome.org`;
                              urlBar.onkeypress = function(e){
                                  if (!e) e = window.event;
@@ -66,7 +76,7 @@
         </div>
         <desktop>
             <br />
-            <button id=debug-button onclick="makeDevTools()">debug</button>
+            <!--<button id=debug-button onclick="makeDevTools()">debug</button>-->
         </desktop>
         <div class="activity-bar">Loading...</div>
         <button id="activity-button" onclick="toggleActivities()">Activities</div>

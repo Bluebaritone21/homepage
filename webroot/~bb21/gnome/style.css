@@ -3,8 +3,8 @@ hidden{
 }
 .close{
     border-radius:100%;
-    width:30px;
-    height:30px;
+    width:25px;
+    height:25px;
     background-color:lightgrey;
     border:none;
     position:absolute;
@@ -124,6 +124,13 @@ button{
 button:hover{
     background-color: lightgrey;
     border:1px darkgrey;
+}
+textarea:focus{
+    border:none;
+    background-color: none;
+}
+textarea{
+    border:none;
 }
 .window:hover{
     resize: both;
