@@ -32,8 +32,8 @@
         }
         .close{
             border-radius:100%;
-            width:30;
-            height:30;
+            width:30px;
+            height:30px;
             background-color:lightgrey;
             border:none;
             position:absolute;
@@ -125,11 +125,20 @@
             border-radius: 20px;
             width:100px;
             height:100px;
-            top:50%;
-            left:50%;
+            top:30px;
+            left:20px;
             overflow: hidden;
             background-color:white;
             box-shadow:0 0 5px rgba(0,0,0,0.4);
+        }
+        input{
+            background-color: lightgrey;
+            border:0;
+            border-radius:20px;
+        }
+        input:hover{
+            background-color: white;
+            border:1px darkgrey;
         }
         .window:hover{
             resize: both;
@@ -162,6 +171,33 @@
                     class="app-button">
                 <img src=https://apps.gnome.org/icons/scalable/org.gnome.gitlab.YaLTeR.Identity.svg height="50">
             </button>
+            <button onclick="var urlBar=document.createElement(`input`);
+                             var iframe=document.createElement(`iframe`);
+                             urlBar.type=`text`;
+                             urlBar.style.height=`30px`;
+                             urlBar.style.position=`absolute`;
+                             urlBar.style.top=`5px`;
+                             urlBar.style.width=`80%`;
+                             urlBar.style.left=`10%`;
+                             urlBar.onkeypress = function(e){
+                                 if (!e) e = window.event;
+                                 var keyCode = e.code || e.key;
+                                 if (keyCode == 'Enter'){
+                                     // Enter pressed
+                                     return false;
+                                    }
+                                }
+                             iframe.src='https://www.frogfind.com';
+                             iframe.style.width=`100%`;
+                             iframe.style.height=`calc(100% - 30px)`;
+                             iframe.style.border=`none`;
+                             var window = makeWindow(1000,600,iframe);
+                             window.appendChild(urlBar);
+                             "
+                     class="app-button">
+                <img src="https://apps.gnome.org/icons/scalable/org.gnome.Epiphany.svg" height="50">
+            </button>
+
         </div>
         <desktop>
             <br />
