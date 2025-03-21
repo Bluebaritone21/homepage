@@ -44,6 +44,7 @@ desktop{
     transition: scale 0.5s ease-in-out;
     scale:1.0;
     z-index:0;
+    overflow:hidden;
 }
 desktop.small{
     scale:0.5;

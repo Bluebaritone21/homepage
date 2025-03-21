@@ -4,6 +4,8 @@
         <title>GNOME</title>
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
         <link rel="stylesheet" href="style.css">
+        <script src="apps/epiphany.js"></script>
+        <script src="apps/texteditor.js"></script>
     </head>
     <hidden>
         <div id="window" class=window>
@@ -14,62 +16,10 @@
     </hidden>
     <body>
         <div class="taskbar">
-            <button onclick="var textbox=document.createElement(`textarea`);
-                             textbox.style.width='100%';
-                             textbox.style.height='calc(100% - 40px)';
-                             textbox.style.resize='none';
-                             var win = makeWindow(600,500,textbox);
-                             win.style.backgroundColor='#eaeaea';
-                             var title  =document.createElement('h3');
-                             title.innerText='Untitled Document';
-                             title.style.position='absolute';
-                             title.style.top='-5px';
-                             title.style.left='30%';
-                             win.appendChild(title);
-                             "
-                    class="app-button">
+            <button onclick="texteditor()" class="app-button">
                 <img src=https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg height="50">
             </button>
-            <button onclick="var urlBar=document.createElement(`input`);
-                             var iframe=document.createElement(`iframe`);
-                             var useCORS=false;
-                             var corsButton=document.createElement(`button`);
-                             corsButton.innerHTML='&#9776;';
-                             corsButton.style.position='absolute';
-                             corsButton.onclick = function(){useCORS=!useCORS;};
-                             corsButton.style.top='5px';
-                             corsButton.style.right='50px';
-                             corsButton.style.height='30px';
-                             corsButton.style.fontSize='15pt';
-                             corsButton.title='Disply URL using a cors proxy';
-                             urlBar.type=`text`;
-                             urlBar.style.height=`30px`;
-                             urlBar.style.position=`absolute`;
-                             urlBar.style.top=`5px`;
-                             urlBar.style.width=`80%`;
-                             urlBar.style.left=`10%`;
-                             urlBar.value=`https://www.gnome.org`;
-                             urlBar.onkeypress = function(e){
-                                 if (!e) e = window.event;
-                                 var keyCode = e.code || e.key;
-                                 if (keyCode == 'Enter'){
-                                     if(useCORS){
-                                        var url = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(urlBar.value);
-                                     }else{
-                                        var url=urlBar.value;
-                                     }
-                                     iframe.src=url;
-                                    }
-                             }
-                             iframe.src='https://www.gnome.org';
-                             iframe.style.width=`100%`;
-                             iframe.style.height=`calc(100% - 40px)`;
-                             iframe.style.border=`none`;
-                             var window = makeWindow(1000,600,iframe);
-                             window.appendChild(urlBar);
-                             window.appendChild(corsButton);
-                             "
-                     class="app-button">
+            <button onclick="epiphany()" class="app-button">
                 <img src="https://apps.gnome.org/icons/scalable/org.gnome.Epiphany.svg" height="50">
             </button>
 
