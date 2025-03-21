@@ -47,6 +47,7 @@
             transition: scale 0.5s ease-in-out;
             background-color: rgb(50,50,50);
             scale:1.0;
+            overflow: hidden;
         }
         desktop{
             width:100vw;
@@ -128,14 +129,14 @@
         }
     </style>
     <body>
-        <div class="activity-bar">Loading...</div>
-        <button id="activity-button" onclick="toggleActivities()">Activities</div>
         <desktop>
             <br />
             <button id=debug-button onclick="makeDevTools()">debug</button>
             <br />
             <button onclick="makeWindow()" class="">Make window</button>
         </desktop>
+        <div class="activity-bar">Loading...</div>
+        <button id="activity-button" onclick="toggleActivities()">Activities</div>
     </body>
     <script>
         var gensym = 0;
