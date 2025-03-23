@@ -64,6 +64,21 @@ desktop.small{
 #activity-button:hover{
     background-color: rgb(50,50,50);
 }
+#battery-button{
+    background-color: black;
+    border-radius:10px;
+    border:0;
+    font-family: 'Heading';
+    font-weight: 900;
+    color:white;
+    position: absolute;
+    top:5px;
+    right:5px;
+    z-index: 100002;
+}
+#battery-button:hover{
+    background-color: rgb(50,50,50);
+}
 .taskbar{
     background-color: rgb(25,25,25);
     border-radius:30px;

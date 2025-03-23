@@ -12,3 +12,5 @@ function texteditor(){
     title.style.left='30%';
     win.appendChild(title);
 }
+
+registerApp("https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg",texteditor);

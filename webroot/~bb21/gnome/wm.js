@@ -13,6 +13,19 @@ function makeDevTools(){
         script.src='https://cdn.jsdelivr.net/npm/eruda';
         document.body.appendChild(script); eruda.init();
 }
+function registerApp(icon, openfunction) {
+    var taskbar = document.getElementById("taskbar");
+    var button = document.createElement("button");
+    button.classList.add("app-button");
+    button.onclick = openfunction;
+    var image = document.createElement("img");
+    image.src = icon;
+    image.style.height = "50px";
+    image.style.width = "50px";
+    button.appendChild(image);
+    taskbar.appendChild(button);
+}
+
 function makeWindow(wdth,hght,contents){
     gensym++;
     var currentGensym=gensym;
@@ -76,3 +89,12 @@ function time(){
 }
 
 setInterval(time,1000);
+
+navigator.getBattery().then(function(battery) {
+    var battery_button = document.getElementById("battery-button");
+    battery_button.innerText = battery.level * 100 + "%";
+    // ... and any subsequent updates.
+    battery.onlevelchange = function() {
+        battery_button.innerText = battery.level * 100 + "%";
+    };
+  });

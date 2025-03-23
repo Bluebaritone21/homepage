@@ -4,8 +4,9 @@
         <title>GNOME</title>
         <link rel="icon" href="https://www.gnome.org/img/favicon.png">
         <link rel="stylesheet" href="style.css">
-        <script src="apps/epiphany.js"></script>
-        <script src="apps/texteditor.js"></script>
+        <script src="wm.js"></script>
+        <script src="apps/epiphany.js" defer></script>
+        <script src="apps/texteditor.js" defer></script>
     </head>
     <hidden>
         <div id="window" class=window>
@@ -15,21 +16,14 @@
         </div>
     </hidden>
     <body>
-        <div class="taskbar">
-            <button onclick="texteditor()" class="app-button">
-                <img src=https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg height="50">
-            </button>
-            <button onclick="epiphany()" class="app-button">
-                <img src="https://apps.gnome.org/icons/scalable/org.gnome.Epiphany.svg" height="50">
-            </button>
-
+        <div class="taskbar" id="taskbar">
         </div>
         <desktop>
             <br />
-            <!--<button id=debug-button onclick="makeDevTools()">debug</button>-->
+        <!-- <button id=debug-button onclick="makeDevTools()">debug</button> -->
         </desktop>
         <div class="activity-bar">Loading...</div>
-        <button id="activity-button" onclick="toggleActivities()">Activities</div>
+        <button id="activity-button" onclick="toggleActivities()">Activities</button>
+        <button id="battery-button">100%</button>
     </body>
-    <script src="wm.js"></script>
 </html>

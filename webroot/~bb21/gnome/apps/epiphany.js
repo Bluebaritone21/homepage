@@ -38,3 +38,5 @@ function epiphany(){
     window.appendChild(urlBar);
     window.appendChild(corsButton);
 }
+
+registerApp('https://apps.gnome.org/icons/scalable/org.gnome.Epiphany.svg',epiphany);
