@@ -13,4 +13,4 @@ function texteditor(){
     win.appendChild(title);
 }
 
-registerApp("https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg",texteditor);
+registerApp("https://apps.gnome.org/icons/scalable/org.gnome.TextEditor.svg",texteditor, "Text Editor");

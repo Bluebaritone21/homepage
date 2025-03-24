@@ -13,7 +13,7 @@ function makeDevTools(){
         script.src='https://cdn.jsdelivr.net/npm/eruda';
         document.body.appendChild(script); eruda.init();
 }
-function registerApp(icon, openfunction) {
+function registerApp(icon, openfunction ,titleText) {
     var taskbar = document.getElementById("taskbar");
     var button = document.createElement("button");
     button.classList.add("app-button");
@@ -22,6 +22,7 @@ function registerApp(icon, openfunction) {
     image.src = icon;
     image.style.height = "50px";
     image.style.width = "50px";
+    image.title = titleText;
     button.appendChild(image);
     taskbar.appendChild(button);
 }
@@ -92,9 +93,24 @@ setInterval(time,1000);
 
 navigator.getBattery().then(function(battery) {
     var battery_button = document.getElementById("battery-button");
-    battery_button.innerText = battery.level * 100 + "%";
+    battery_button.title = battery.level * 100 + "%";
+    if(battery.level >=0.3){
+        battery_button.classList.add("white-icon");
+        battery_button.src = getIcon("battery-level-"+Math.round(battery.level*10)*10);
+    }else if(battery.level >= 0.2){
+        battery_button.classList.add("white-icon");
+        battery_button.src = getIcon("battery-low");
+    }else{
+        battery_button.classList.remove("white-icon");
+        battery_button.src = getIcon("battery-action");
+    }
     // ... and any subsequent updates.
     battery.onlevelchange = function() {
-        battery_button.innerText = battery.level * 100 + "%";
+        battery_button.title = battery.level * 100 + "%";
     };
   });
+
+
+  function getIcon(name){
+    return "https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ait/"+name+"-symbolic.svg";
+  }

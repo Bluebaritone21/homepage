@@ -1,39 +1,31 @@
 hidden{
     display: none;
 }
+.white-icon{
+    filter: brightness(0%) saturate(100%) invert(97%) sepia(3%) saturate(9%) hue-rotate(48deg) brightness(109%) contrast(100%);
+}
 .close{
     border-radius:100%;
     width:25px;
     height:25px;
-    background-color:lightgrey;
+    background-color:rgba(100,100,100,0.5);
     border:none;
     position:absolute;
     top:5px;
     right:5px;
     font-size: 15pt;
 }
-@font-face {
-    font-family: 'Cantarell';
-    src: url("cantarell.regular.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face{
-    font-family: 'Heading';
-    src: url("cantarell.bold.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
 body{
     margin: 0;
-    font-family: 'Cantarell', sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     background-color: rgb(50,50,50);
     overflow: hidden;
 }
 desktop{
     width:100vw;
     height:100vh;
-    background-image: url("gnome_example.jpg");
+    background-image: url("https://zebreus.github.io/all-gnome-backgrounds/thumbs500/adwaita-l-e181a39df30ba6b532a611d1bdf8de63aea945d7.webp");
     background-repeat: no-repeat;
     background-size: cover;
     position:absolute;
@@ -41,19 +33,20 @@ desktop{
     left:0px;
     margin: 0px;
     padding: 0px;
-    transition: scale 0.5s ease-in-out;
+    transition: scale 0.5s ease-in-out,border-radius 0.5s ease-in-out;
     scale:1.0;
     z-index:0;
     overflow:hidden;
 }
 desktop.small{
-    scale:0.5;
+    scale:0.7;
+    border-radius: 30px;
 }
 #activity-button{
     background-color: black;
     border-radius:10px;
     border:0;
-    font-family: 'Heading';
+    font-family: "Inter", sans-serif;
     font-weight: 900;
     color:white;
     position: absolute;
@@ -65,29 +58,22 @@ desktop.small{
     background-color: rgb(50,50,50);
 }
 #battery-button{
-    background-color: black;
-    border-radius:10px;
-    border:0;
-    font-family: 'Heading';
-    font-weight: 900;
     color:white;
     position: absolute;
     top:5px;
     right:5px;
     z-index: 100002;
 }
-#battery-button:hover{
-    background-color: rgb(50,50,50);
-}
 .taskbar{
     background-color: rgb(25,25,25);
-    border-radius:30px;
-    border:0;
+    border-radius: 20px;
+    border: 0;
     font-weight: bold;
-    color:white;
+    color: white;
     position: absolute;
-    bottom:10px;
-    left:45%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .app-button{
     background:none;
@@ -106,7 +92,7 @@ desktop.small{
     line-height: 30px;
     font-size: 12pt;
     text-align: center;
-    font-family: 'Heading';
+    font-family: "Inter", sans-serif;
     font-weight: 900;
     margin: 0;
     z-index: 100000;
@@ -147,6 +133,8 @@ textarea:focus{
 }
 textarea{
     border:none;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
 }
 .window:hover{
     resize: both;
