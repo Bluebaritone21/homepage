@@ -97,7 +97,10 @@ setInterval(time,1000);
 navigator.getBattery().then(function(battery) {
     var battery_button = document.getElementById("battery-button");
     battery_button.title = battery.level * 100 + "%";
-    if(battery.level >=0.3){
+    if(battery.level == 1){
+        battery_button.classList.add("white-icon");
+        battery_button.src= getIcon("battery-level-100");
+    }else if(battery.level >=0.3){
         battery_button.classList.add("white-icon");
         battery_button.src = getIcon("battery-level-"+Math.round(battery.level*10)*10);
     }else if(battery.level >= 0.2){
@@ -113,6 +116,16 @@ navigator.getBattery().then(function(battery) {
     };
   });
 
+window.addEventListener("online",function(e){
+    var wifi_button = this.document.getElementById("network-button");
+    wifi_button.src = getIcon("radiowaves-1");
+    wifi_button.classList.add("white-icon");
+})
+window.addEventListener("offline",function(e){
+    var wifi_button = this.document.getElementById("network-button");
+    wifi_button.src = getIcon("radiowaves-5");
+    wifi_button.classList.add("white-icon");
+})
 
   function getIcon(name){
     return "https://teams.pages.gitlab.gnome.org/Design/icon-development-kit-www/img/symbolic/ait/"+name+"-symbolic.svg";
