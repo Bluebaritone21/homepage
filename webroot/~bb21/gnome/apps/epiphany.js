@@ -34,6 +34,7 @@ function epiphany(){
     iframe.style.width=`100%`;
     iframe.style.height=`calc(100% - 60px)`;
     iframe.style.border=`none`;
+    iframe.allowFullscreen = "allow";
     var window = makeWindow(1000,600,iframe);
     window.appendChild(urlBar);
     window.appendChild(corsButton);

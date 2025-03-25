@@ -8,11 +8,14 @@ function toggleActivities(){
     }
     activities = !activities;
 }
-function makeDevTools(){
-    var script = document.createElement('script');
+function debug(){
+        var script = document.createElement('script');
         script.src='https://cdn.jsdelivr.net/npm/eruda';
-        document.body.appendChild(script); eruda.init();
+        script.onload=function(e){eruda.init();}
+        document.body.appendChild(script);
+
 }
+
 function registerApp(icon, openfunction ,titleText) {
     var taskbar = document.getElementById("taskbar");
     var button = document.createElement("button");
